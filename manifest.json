@@ -1,16 +1,31 @@
 {
   "manifest_version": 2,
 
-  "name": "Getting started example",
-  "description": "This extension allows the user to change the background color of the current page.",
+  "name": "UPass Renewer",
+  "description": "This extension automatically renews your UPass every month at the earliest time possible.",
   "version": "1.0",
 
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
+  // "background": {
+  //   "scripts": [
+  //     "jquery-2.0.3.min.js", "automate.js"
+  //   ],
+  //   "persistent": true
+  // },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["js/jquery-2.0.3.min.js", "inject.js"]
+    }
+  ],
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "tabs",
+    "https://*/*",
+    "http://*/*"
   ]
 }
